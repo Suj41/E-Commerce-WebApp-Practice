@@ -126,4 +126,9 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 MEDIA_ROOT= BASE_DIR
 MEDIA_URL='/image/download/'
 
+CSRF_TRUSTED_ORIGINS = [
+    "https://sujalstore.azurewebsites.net",
+]
+
+
 
