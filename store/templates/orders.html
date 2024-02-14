@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block content%}
+{% load cart %}
+{% load custom_filter %}
+<div class="container">
+    <div class="border rounded p-4 m-4">
+        <p class="display-4 ml-4 pl-4q">Your Orders</p>
+        <table class="table">
+            <thead>
+                <th> S.N </th>
+                <th> Product </th>
+                <td> Image </td>
+                <th> Price </th>
+                <th> Quantity </th>
+                <th> Date </th>
+                <th> Total </th>
+                <th> Status </th>
+            </thead>
+            <tbody>
+                {%for order in orders %}
+                <tr>
+                   <td> {{ forloop.counter }} </td>
+                   <td>{{ order.product.name }}</td> 
+                   <td> <img src="{{order.product.image.url}}" style="height: 60px;" class="rounded-circle" alt=""></td>
+                   <td>$ {{ order.product.price }}</td>
+                   <td>{{ order.quantity }}</td>
+                   <td> {{ order.date }}</td>
+                   <td>$ {{ order.quantity|default:0|multiply:order.price|default:0 }}</td>
+                   <td>
+                    {% if order.status %}
+                        <small class="border" style="background-color: green; color: azure;">Completed</small>
+                    {% else %}
+                        <small class="border" style="background-color: yellow; color: black;">Pending</small>
+                    {% endif %}
+                    </td>
+                
+                </tr>
+            </tbody>
+            {% endfor %}
+            <tfoot>
+        </table>
+        
+    </div>
+</div>
+ 
+ 
+{% endblock %}
