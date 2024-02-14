@@ -11,7 +11,7 @@ class Customer(models.Model):
         self.save()
 
     def isExist(self):
-        if Customer.objaects.filter(email=self.email):
+        if Customer.objects.filter(email=self.email):
             return True
         return False
     @staticmethod
